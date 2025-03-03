@@ -5,8 +5,7 @@ app.use(express.static(__dirname + '/public'));
 
 
 app.get("/api/clicked", (req, res, next) => {
-    //const seed = Math.floor(Math.random() * 1000);
-    res.send(`<img src='/me.png' alt='Image>`);
+    res.send(`<img src='/Eu.png' alt='Image>`);
 })
 
 app.listen(3000, () => {
