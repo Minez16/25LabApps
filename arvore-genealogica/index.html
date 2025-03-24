@@ -38,20 +38,20 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); 
         }
 
-        .family-tree {
+        .arvore {
             display: flex;
             flex-direction: column;
             align-items: center;
             margin-top: 20px;
         }
 
-        .generation {
+        .geracao {
             display: flex;
             justify-content: center;
             margin: 20px 0;
         }
 
-        .member {
+        .membro {
             background-color: #ffffff; 
             padding: 15px;
             margin: 0 10px;
@@ -65,13 +65,13 @@
             position: relative; 
         }
 
-        .member:hover {
+        .membro:hover {
             background-color: #e9ecef;
             transform: scale(1.05);
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
         }
 
-        .member::after {
+        .membro::after {
             content: '';
             position: absolute;
             bottom: -5px;
@@ -83,50 +83,67 @@
             transition: width 0.3s; 
         }
 
-        .member:hover::after {
+        .membro:hover::after {
             width: 100%;
         }
 
-        footer {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 0.9em;
-            color: #6c757d;
+        /* Button styles */
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
         }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+
     </style>
+
+    <script>
+        function resetContent() {
+            document.getElementById('main').innerHTML = '<h1>Família</h1>';
+        }
+    </script>
 
 </head>
 
 <body>
 
+    <button class="back-button" onclick="resetContent()">Voltar ao Início</button>
+
     <div id="main">
-        <h1>Família de Nome de Alguém</h1>
+        <h1>Família</h1>
     </div>
 
-    <div class="family-tree">
+    <div class="arvore">
 
-        <div class="generation">
-            <div class="member" hx-get="./bio/avomaterna.html" hx-swap="innerHTML" hx-target="#main">Avó Materna</div>
-            <div class="member" hx-get="./bio/avomaterno.html" hx-swap="innerHTML" hx-target="#main">Avô Materno</div>
-            <div class="member" hx-get="./bio/avopaterna.html" hx-swap="innerHTML" hx-target="#main">Avó Paterna</div>
-            <div class="member" hx-get="./bio/avopaterno.html " hx-swap="innerHTML" hx-target="#main">Avô Paterno</div>
+        <div class="geracao">
+            <div class="membro" hx-get="./bio/avomaterna.html" hx-swap="innerHTML" hx-target="#main">Avó Materna</div>
+            <div class="membro" hx-get="./bio/avomaterno.html" hx-swap="innerHTML" hx-target="#main">Avô Materno</div>
+            <div class="membro" hx-get="./bio/avopaterna.html" hx-swap="innerHTML" hx-target="#main">Avó Paterna</div>
+            <div class="membro" hx-get="./bio/avopaterno.html" hx-swap="innerHTML" hx-target="#main">Avô Paterno</div>
         </div>
 
-        <div class="generation">
-            <div class="member" hx-get="./bio/mae.html" hx-swap="innerHTML" hx-target="#main">Mãe</div>
-            <div class="member" hx-get="./bio/pai.html" hx-swap="innerHTML" hx-target="#main">Pai</div>
-        </div>
+        <div class="geracao">
+            <div class="membro" hx-get="./bio/mae.html" hx-swap="innerHTML" hx-target="#main">Mãe</div>
+            <div class="membro" hx-get="./bio/pai.html" hx-swap="innerHTML" hx-target="#main">Pai</div>
+ </div>
 
-        <div class="generation">
-            <div class="member" hx-get="./bio/filho.html" hx-swap="innerHTML" hx-target="#main">Filho</div>
-            <div class="member" hx-get="./bio/eu.html" hx-swap="innerHTML" hx-target="#main">Eu</div>
+        <div class="geracao">
+            <div class="membro" hx-get="./bio/filho.html" hx-swap="innerHTML" hx-target="#main">Filho</div>
+            <div class="membro" hx-get="./bio/eu.html" hx-swap="innerHTML" hx-target="#main">Eu</div>
         </div>
 
     </div>
-
-    <footer>
-        2025
-    </footer>
 
 </body>
 
