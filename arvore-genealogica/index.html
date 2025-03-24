@@ -87,7 +87,6 @@
             width: 100%;
         }
 
-        /* Button styles */
         .back-button {
             position: absolute;
             top: 20px;
@@ -133,35 +132,17 @@
             100% { transform: rotate(360deg); }
         }
 
+        [hx-boost] .loading-overlay {
+            display: flex;
+        }
+
     </style>
-
-    <script>
-        function resetContent() {
-            document.getElementById('main').innerHTML = '<h1>Família</h1>';
-        }
-
-        function showLoading() {
-            document.getElementById('loadingOverlay').style.display = 'flex';
-        }
-
-        function hideLoading() {
-            document.getElementById('loadingOverlay').style.display = 'none';
-        }
-
-        document.addEventListener('htmx:configRequest', function() {
-            showLoading();
-        });
-
-        document.addEventListener('htmx:afterSwap', function() {
-            hideLoading();
-        });
-    </script>
 
 </head>
 
 <body>
 
-    <button class="back-button" onclick="resetContent()">Voltar ao Início</button>
+    <button class="back-button" onclick="document.getElementById('main').innerHTML = '<h1>Árvore da minha Família</h1>';">Voltar ao Início</button>
 
     <div id="main">
         <h1>Árvore da minha Família</h1>
@@ -170,20 +151,20 @@
     <div class="arvore">
 
         <div class="geracao">
-            <div class="membro" hx-get="./bio/avomaterna.html" hx-swap="innerHTML" hx-target="#main">Avó Materna</div>
-            <div class="membro" hx-get="./bio/avomaterno.html" hx-swap="innerHTML" hx-target="#main">Avô Materno</div>
-            <div class="membro" hx-get="./bio/avopaterna.html" hx-swap="innerHTML" hx-target="#main">Avó Paterna</div>
-            <div class="membro" hx-get="./bio/avopaterno.html" hx-swap="innerHTML" hx-target="#main">Avô Paterno</div>
+            <div class="membro" hx-get="./bio/avomaterna.html" hx-swap="innerHTML" hx-target="#main" hx-boost="true">Avó Materna</div>
+            <div class="membro" hx-get="./bio/avomaterno.html" hx-swap="innerHTML" hx-target="#main" hx-boost="true">Avô Materno</div>
+            <div class="membro" hx-get="./bio/avopaterna.html" hx-swap="innerHTML" hx-target="#main" hx-boost="true">Avó Paterna</div>
+            <div class="membro" hx-get="./bio/avopaterno.html" hx-swap="innerHTML" hx-target="#main" hx-boost="true">Avô Paterno</div>
         </div>
 
         <div class="geracao">
-            <div class="membro" hx-get="./bio/mae.html" hx-swap="innerHTML" hx-target="#main">Mãe</div>
-            <div class="membro" hx-get="./bio/pai.html" hx-swap="innerHTML" hx-target="#main">Pai</div>
+            <div class="membro" hx-get="./bio/mae.html" hx-swap="innerHTML" hx-target="#main" hx-boost="true">Mãe</div>
+            <div class="membro" hx-get="./bio/pai.html" hx-swap="innerHTML" hx-target="#main" hx-boost="true">Pai</div>
         </div>
 
-        <div class="geracao">
-            <div class="membro" hx-get="./bio/filho.html" hx-swap="innerHTML" hx-target="#main">Filho</div>
-            <div class="membro" hx-get="./bio/eu.html" hx-swap="innerHTML" hx-target="#main">Eu</div>
+        <div class ="geracao">
+            <div class="membro" hx-get="./bio/filho.html" hx-swap="innerHTML" hx-target="#main" hx-boost="true">Filho</div>
+            <div class="membro" hx-get="./bio/eu.html" hx-swap="innerHTML" hx-target="#main" hx-boost="true">Eu</div>
         </div>
 
     </div>
