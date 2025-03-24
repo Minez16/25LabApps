@@ -106,13 +106,13 @@
         }
 
         .loading-overlay {
+            pointer-events: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             background-color: rgba(255, 255, 255, 0.8);
-            display: none;
             justify-content: center;
             align-items: center;
             z-index: 1000;
@@ -142,36 +142,37 @@
 
 <body>
 
-    <button class="back-button" hx-boost="true" onclick="document.getElementById('main').innerHTML = '<h1>Árvore da minha Família</h1>';">Voltar ao Início</button>
+    <button class="back-button" hx-indicator="#loadingOverlay" onclick="document.getElementById('main').innerHTML = '<h1>Árvore da minha Família</h1>';">Voltar ao Início</button>
 
     <div id="main">
         <h1>Árvore da minha Família</h1>
     </div>
 
+    <div class="loading-overlay htmx-indicator" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+    </div>
+
     <div class="arvore">
 
         <div class="geracao">
-            <div class="membro" hx-get="./bio/avomaterna.html" hx-swap="innerHTML" hx-target="#main" hx-boost="true">Avó Materna</div>
-            <div class="membro" hx-get="./bio/avomaterno.html" hx-swap="innerHTML" hx-target="#main" hx-boost="true">Avô Materno</div>
-            <div class="membro" hx-get="./bio/avopaterna.html" hx-swap="innerHTML" hx-target="#main" hx-boost="true">Avó Paterna</div>
-            <div class="membro" hx-get="./bio/avopaterno.html" hx-swap="innerHTML" hx-target="#main" hx-boost="true">Avô Paterno</div>
+            <div class="membro" hx-get="./bio/avomaterna.html" hx-swap="innerHTML" hx-target="#main" hx-indicator="#loadingOverlay">Avó Materna</div>
+            <div class="membro" hx-get="./bio/avomaterno.html" hx-swap="innerHTML" hx-target="#main" hx-indicator="#loadingOverlay">Avô Materno</div>
+            <div class="membro" hx-get="./bio/avopaterna.html" hx-swap="innerHTML" hx-target="#main" hx-indicator="#loadingOverlay">Avó Paterna</div>
+            <div class="membro" hx-get="./bio/avopaterno.html" hx-swap="innerHTML" hx-target="#main" hx-indicator="#loadingOverlay">Avô Paterno</div>
         </div>
 
         <div class="geracao">
-            <div class="membro" hx-get="./bio/mae.html" hx-swap="innerHTML" hx-target="#main" hx-boost="true">Mãe</div>
-            <div class="membro" hx-get="./bio/pai.html" hx-swap="innerHTML" hx-target="#main" hx-boost="true">Pai</div>
+            <div class="membro" hx-get="./bio/mae.html" hx-swap="innerHTML" hx-target="#main" hx-indicator="#loadingOverlay">Mãe</div>
+            <div class="membro" hx-get="./bio/pai.html" hx-swap="innerHTML" hx-target="#main" hx-indicator="#loadingOverlay">Pai</div>
         </div>
 
         <div class ="geracao">
-            <div class="membro" hx-get="./bio/filho.html" hx-swap="innerHTML" hx-target="#main" hx-boost="true">Filho</div>
-            <div class="membro" hx-get="./bio/eu.html" hx-swap="innerHTML" hx-target="#main" hx-boost="true">Eu</div>
+            <div class="membro" hx-get="./bio/filho.html" hx-swap="innerHTML" hx-target="#main" hx-indicator="#loadingOverlay">Filho</div>
+            <div class="membro" hx-get="./bio/eu.html" hx-swap="innerHTML" hx-target="#main" hx-indicator="#loadingOverlay">Eu</div>
         </div>
 
     </div>
 
-    <div class="loading-overlay" id="loadingOverlay">
-        <div class="loading-spinner"></div>
-    </div>
 
 </body>
 
